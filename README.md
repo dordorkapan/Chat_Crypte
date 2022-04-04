@@ -10,7 +10,9 @@ Dans ce projet, je vais créer un chat entre deux ordinateurs, en les connectant
 
 ## Présentation des structures de donénes utilisées:
 ```
-clas Client():
+class Client():
+
+  def _init_()
 
   def clear(): 
     """
@@ -31,4 +33,21 @@ clas Client():
     """
     Utilisé pour gérer la tâche d'envoyer des messages à la salle de discussion.
     """
+    
+class Server():
+
+  def gérer_client(client):
+  """
+  C'est le thread qui écoute toutes les données entrantes par un seul client.
+  """
+
+  def close_connection(client, kicked=False):
+  """
+  Cette fonction est appelée chaque fois qu'un client ou une connexion doit être fermé
+  """
+  
+class Cryptographie():
+
+  def Texte_normal():
+
 ```
