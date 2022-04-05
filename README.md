@@ -1,4 +1,4 @@
-# Chat Crypté
+# Cat: Le Chat Crypté
 
 Dans ce projet, je vais créer un chat entre deux ordinateurs, en les connectant via leur adresse IP. Tandis que le chat va être crypté et seulement avec la clé, vous pouvez lire le message.
 
