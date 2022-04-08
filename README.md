@@ -35,13 +35,9 @@ def recevoir():
   
   def ecrire(self):
   
+  def cripter(self, message):
+  
   def arreter(self):
   
   def recevoir(self):
-```
-### class Cryptographie():
-
-```
-  def _init_():
-
 ```
