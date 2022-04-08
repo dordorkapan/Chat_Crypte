@@ -18,7 +18,7 @@ Dans ce projet, je vais créer un chat entre deux ordinateurs, en les connectant
 ###class Cryptographie():
 
 ```
-  def Texte_normal():
+  def _init_():
 
 ```
 ### Le Server
