@@ -23,8 +23,13 @@ def broadcast(message):
   où nous envoyons le message à tous les clients
   """
 def gerer(client):
-
+  """
+  Gérer les clients qui sont entrain d'arriver
+  """
 def recevoir():
+  """
+  Reçoit des clients et ses messages
+  """
 
 ```
 ### class Client():
