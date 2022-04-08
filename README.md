@@ -8,8 +8,10 @@ Dans ce projet, je vais créer un chat entre deux ordinateurs, en les connectant
 - Création l'espace de chat
 - Convertir le texte soumis en un texte crypté
 
+
 ## MVP
 Premièrement j'attend a créé une simple discussion entre deux ordinateurs, en les connectant via leur adresse IP
+
 
 ## Présentation des structures de donénes utilisées:
 
@@ -25,7 +27,6 @@ def gerer(client):
 def recevoir():
 
 ```
-
 ### class Client():
 
 ```
