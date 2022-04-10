@@ -1,11 +1,10 @@
-# Python program to implement client side of chat room.
 import socket
 import sys
 from _thread import *
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 if len(sys.argv) != 3:
-	print ("Correct usage: script, IP address, port number")
+	print ("Utilisation correcte : script, adresse IP, numéro de port")
 	exit()
 
 IP_address = str(sys.argv[1])
