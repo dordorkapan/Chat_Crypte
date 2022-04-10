@@ -14,6 +14,9 @@ server.connect((IP_address, Port))
 
 
 def send_msg(sock):
+"""
+Le programme reçoit un message que vous écrivez, l'envoie à l'autre client et l'affiche sur votre écran
+"""
     while True:
         data = sys.stdin.readline()
         #encrypt 
