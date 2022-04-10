@@ -17,33 +17,5 @@ Premièrement j'attend a créé une simple discussion entre deux ordinateurs, en
 
 ### Le Server
 
-```
-def broadcast(message):
-  """
-  où nous envoyons le message à tous les clients
-  """
-def gerer(client):
-  """
-  Gérer les clients qui sont entrain d'arriver
-  """
-def recevoir():
-  """
-  Reçoit des clients et ses messages
-  """
 
-```
-### class Client():
-
-```
-  def _init_(self, host, port):
-  
-  def gui_loop(self):
-  
-  def ecrire(self):
-  
-  def cripter(self, message):
-  
-  def arreter(self):
-  
-  def recevoir(self):
-```
+### Le Client
