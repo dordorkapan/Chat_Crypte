@@ -7,97 +7,78 @@ from _thread import *
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-# checks whether sufficient arguments have been provided
+# vérifie si suffisamment d'arguments ont été fournis
 if len(sys.argv) != 3:
-	print ("Correct usage: script, IP address, port number")
+	print ("Utilisation correcte : script, adresse IP, numéro de port")
 	exit()
 
-# takes the first argument from command prompt as IP address
+# prend le premier argument de l'invite de commande comme adresse IP
 IP_address = str(sys.argv[1])
 
-# takes second argument from command prompt as port number
+# prend le deuxième argument de l'invite de commande comme numéro de port
 Port = int(sys.argv[2])
 
-"""
-binds the server to an entered IP address and at the
-specified port number.
-The client must be aware of these parameters
-"""
+#lie le serveur à une adresse IP saisie et à la numéro de port spécifié.
 server.bind((IP_address, Port))
 
-"""
-listens for 100 active connections. This number can be
-increased as per convenience.
-"""
+# écoute 100 connexions actives.
 server.listen(100)
 
 list_of_clients = []
 
 def clientthread(conn, addr):
-
-	# sends a message o the client whose user object is conn
-	conn.send("Welcome to this chatroom!".encode())
+"""
+La fonction diffuse les messages des clients s'il y en a un.
+"""
+# envoie un message au client dont l'objet utilisateur est conn
+conn.send("Bienvenue dans le CAT! le Chat Cripte!".encode())
 
 	while True:
 			try:
 				message = conn.recv(2048)
 				if message:
-
-					"""prints the message and address of the
-					user who just sent the message on the server
-					terminal"""
 					print ("<" + addr[0] + "> " + message)
 
-					# Calls broadcast function to send message to all
+					# Appelle la fonction broadcast pour envoyer un message à tous
 					message_to_send = "<" + addr[0] + "> " + message
 					broadcast(message_to_send, conn)
 
 				else:
-					"""message may have no content if the connection
-					is broken, in this case we remove the connection"""
 					remove(conn)
 
 			except:
 				continue
 
-"""Using the below function, we broadcast the message to all
-clients who's object is not the same as the one sending
-the message """
 def broadcast(message, connection):
+"""
+le programme diffuse le message à tous les clients 
+dont le sujet n'est pas le même que celui qui envoie le message
+"""
 	for clients in list_of_clients:
 		if clients != connection:
 			try:
 				clients.send(message.encode())
 			except:
 				clients.close()
-
-				# if the link is broken, we remove the client
+				# si le lien est cassé, on supprime le client
 				remove(clients)
 
-"""The following function simply removes the object
-from the list that was created at the beginning of
-the program"""
 def remove(connection):
+"""
+La fonction suivante supprime simplement l'objet 
+de la liste qui a été créée au début de le programme
+"""
 	if connection in list_of_clients:
 		list_of_clients.remove(connection)
 
 while True:
-
-	"""Accepts a connection request and stores two parameters,
-	conn which is a socket object for that user, and addr
-	which contains the IP address of the client that just
-	connected"""
 	conn, addr = server.accept()
-
-	"""Maintains a list of clients for ease of broadcasting
-	a message to all available people in the chatroom"""
 	list_of_clients.append(conn)
 
-	# prints the address of the user that just connected
+	# imprime l'adresse de l'utilisateur qui vient de se connecter
 	print (addr[0] + " connected")
 
-	# creates and individual thread for every user
-	# that connects
+	# crée un thread individuel pour chaque utilisateur qui se connecte
 	start_new_thread(clientthread,(conn,addr))	
 
 conn.close()
