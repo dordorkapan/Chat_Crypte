@@ -13,10 +13,21 @@ else:
     
     # prend le deuxième argument de l'invite de commande comme numéro de port
     Port = int(sys.argv[2])
+"""
+# vérifie si suffisamment d'arguments ont été fournis
+if len(sys.argv) != 3:
+	print ("Utilisation correcte : script, adresse IP, numéro de port")
+	exit()
+
+# prend le premier argument de l'invite de commande comme adresse IP
+IP_address = str(sys.argv[1])
+
+# prend le deuxième argument de l'invite de commande comme numéro de port
+Port = int(sys.argv[2])
+"""
 
 #lie le serveur à une adresse IP saisie et à la numéro de port spécifié.
 server.bind((IP_address, Port))
-
 
 def send_msg(sock):
     """
