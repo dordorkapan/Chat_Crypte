@@ -9,6 +9,17 @@ server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # vérifie si suffisamment d'arguments ont été fournis
 if len(sys.argv) != 3:
+    IP_address = "172.20.12.20"
+    Port = 2222
+else:
+    # prend le premier argument de l'invite de commande comme adresse IP
+    IP_address = str(sys.argv[1])
+    
+    # prend le deuxième argument de l'invite de commande comme numéro de port
+    Port = int(sys.argv[2])
+"""
+# vérifie si suffisamment d'arguments ont été fournis
+if len(sys.argv) != 3:
 	print ("Utilisation correcte : script, adresse IP, numéro de port")
 	exit()
 
@@ -17,6 +28,7 @@ IP_address = str(sys.argv[1])
 
 # prend le deuxième argument de l'invite de commande comme numéro de port
 Port = int(sys.argv[2])
+"""
 
 #lie le serveur à une adresse IP saisie et à la numéro de port spécifié.
 server.bind((IP_address, Port))
@@ -30,22 +42,21 @@ def clientthread(conn, addr):
     """
     La fonction diffuse les messages des clients s'il y en a un.
     """
-
-# envoie un message au client dont l'objet utilisateur est conn
-conn.send("Bienvenue dans le CAT! le Chat Cripte!".encode())
-
-while True:
-    try:
-        message = conn.recv(2048)
-        if message:
-            print ("<" + addr[0] + "> " + message)
-			# Appelle la fonction broadcast pour envoyer un message à tous
-            message_to_send = "<" + addr[0] + "> " + message
-            broadcast(message_to_send, conn)
-        else:
-            remove(conn)
-    except:
-        continue
+    # envoie un message au client dont l'objet utilisateur est conn
+    conn.send("Bienvenue dans le CAT! le Chat Cripte!".encode())
+    
+    while True:
+        try:
+            message = conn.recv(2048)
+            if message:
+                print ("<" + addr[0] + "> " + message)
+    			# Appelle la fonction broadcast pour envoyer un message à tous
+                message_to_send = "<" + addr[0] + "> " + message
+                broadcast(message_to_send, conn)
+            else:
+                remove(conn)
+        except:
+            continue
 
 def broadcast(message, connection):
     """
