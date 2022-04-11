@@ -27,49 +27,47 @@ server.listen(100)
 list_of_clients = []
 
 def clientthread(conn, addr):
-"""
-La fonction diffuse les messages des clients s'il y en a un.
-"""
+    """
+    La fonction diffuse les messages des clients s'il y en a un.
+    """
+
 # envoie un message au client dont l'objet utilisateur est conn
 conn.send("Bienvenue dans le CAT! le Chat Cripte!".encode())
 
-	while True:
-			try:
-				message = conn.recv(2048)
-				if message:
-					print ("<" + addr[0] + "> " + message)
-
-					# Appelle la fonction broadcast pour envoyer un message à tous
-					message_to_send = "<" + addr[0] + "> " + message
-					broadcast(message_to_send, conn)
-
-				else:
-					remove(conn)
-
-			except:
-				continue
+while True:
+    try:
+        message = conn.recv(2048)
+        if message:
+            print ("<" + addr[0] + "> " + message)
+			# Appelle la fonction broadcast pour envoyer un message à tous
+            message_to_send = "<" + addr[0] + "> " + message
+            broadcast(message_to_send, conn)
+        else:
+            remove(conn)
+    except:
+        continue
 
 def broadcast(message, connection):
-"""
-le programme diffuse le message à tous les clients 
-dont le sujet n'est pas le même que celui qui envoie le message
-"""
-	for clients in list_of_clients:
-		if clients != connection:
-			try:
-				clients.send(message.encode())
-			except:
-				clients.close()
-				# si le lien est cassé, on supprime le client
-				remove(clients)
+    """
+    le programme diffuse le message à tous les clients 
+    dont le sujet n'est pas le même que celui qui envoie le message
+    """
+    for clients in list_of_clients:
+        if clients != connection:
+            try:
+                clients.send(message.encode())
+            except:
+                clients.close()
+                # si le lien est cassé, on supprime le client
+                remove(clients)
 
 def remove(connection):
-"""
-La fonction suivante supprime simplement l'objet 
-de la liste qui a été créée au début de le programme
-"""
-	if connection in list_of_clients:
-		list_of_clients.remove(connection)
+    """
+    La fonction suivante supprime simplement l'objet 
+    de la liste qui a été créée au début de le programme
+    """
+    if connection in list_of_clients:
+        list_of_clients.remove(connection)
 
 while True:
 	conn, addr = server.accept()
