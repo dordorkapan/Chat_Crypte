@@ -19,29 +19,28 @@ Dans ce projet, je vais créer un chat entre deux ordinateurs, en les connectant
 ### Le Server
 ```
 def clientthread(conn, addr):
-"""
-La fonction diffuse les messages des clients s'il y en a un.
-"""
+    """
+    La fonction diffuse les messages des clients s'il y en a un.
+    """
 
 def broadcast(message, connection):
-"""
-La fonction diffuse le message à tous les clients 
-dont le sujet n'est pas le même que celui qui envoie le message
-"""
+    """
+    La fonction diffuse le message à tous les clients 
+    dont le sujet n'est pas le même que celui qui envoie le message
+    """
 def remove(connection):
-"""
-La fonction suivante supprime simplement l'objet 
-de la liste qui a été créée au début de
-le programme
-"""
+    """
+    La fonction suivante supprime simplement l'objet 
+    de la liste qui a été créée au début de le programme
+    """
 ```
 
 ### Le Client
 ```
 def send_msg(sock):
-"""
-Le programme reçoit un message que vous écrivez, l'envoie à l'autre client et l'affiche sur votre écran
-"""
+    """
+    Le programme reçoit un message que vous écrivez, l'envoie à l'autre client et l'affiche sur votre écran
+    """
 ```
 
 ### Inspiration:
