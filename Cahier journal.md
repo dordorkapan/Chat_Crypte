@@ -5,13 +5,13 @@
 
 ### 30/03/2022
 - J'ai creé le GitHub
-- J'ai decouper le projet en sous-problèmes
+- J'ai decoupé le projet en sous-problèmes
 - Ecrit le MVP
 
 ### 02/04/2022 - 10/04/2022
-- Je fait la tructures de donénes
-- Les fonctions et les difinitions
-- Ecrit la prenier MVP
+- J'ai fait la structure de données
+- Les fonctions et les définitions
+- Ecrit le premier MVP
 
 ### 11/04/2022 - 17/04/2022
-- Cripter le chat
+- Crypté le chat
