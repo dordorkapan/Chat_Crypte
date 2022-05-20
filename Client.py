@@ -39,8 +39,8 @@ def send_msg(sock):
     """
     while True:
         data = sys.stdin.readline()
-        encMsg = encrypt(passwd,(name + " : " + data)) # encrypting msg
-        sock.send(encMsg.encode())
+        # Crypter le msg
+        sock.send(data.encode())
         sys.stdout.write("<You>")
         sys.stdout.write(str(data))
         sys.stdout.flush()
@@ -50,7 +50,7 @@ start_new_thread(send_msg,(server,))
 
 while True:
     message = server.recv(2048)
-    print(decrypt(passwd,server.recv(1024)).decode('utf-8'))
+    # décrypter le msg
     print (message)
 
 
