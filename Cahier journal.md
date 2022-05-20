@@ -14,4 +14,7 @@
 - Ecrit le premier MVP
 
 ### 11/04/2022 - 17/04/2022
-- Crypté le chat
+- Fini de créer le premier MVP
+
+### 25/04/2022 - 15/05/2022
+- Crypter le chat
